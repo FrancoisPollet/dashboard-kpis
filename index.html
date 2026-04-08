@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard KPIs</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #f5f5f3;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+  header {
+    background: #ffffff;
+    border-bottom: 0.5px solid #e0e0db;
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header h1 { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+  .last-updated { font-size: 12px; color: #888; }
+  main { padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .reports-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .report-card {
+    background: #ffffff;
+    border: 0.5px solid #e0e0db;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .report-header {
+    padding: 14px 18px;
+    border-bottom: 0.5px solid #e0e0db;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .report-title {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1D9E75;
+    flex-shrink: 0;
+  }
+  .open-btn {
+    font-size: 11px;
+    color: #888;
+    text-decoration: none;
+    border: 0.5px solid #e0e0db;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .open-btn:hover { background: #f5f5f3; color: #1a1a1a; }
+  iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    display: block;
+  }
+  .loading-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    color: #888;
+    font-size: 13px;
+    background: #fafaf8;
+  }
+  @media (max-width: 900px) {
+    .reports-grid { grid-template-columns: 1fr; }
+    main { padding: 1rem; }
+    header { padding: 0 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Dashboard KPIs</h1>
+  <span class="last-updated" id="ts"></span>
+</header>
+
+<main>
+  <div class="reports-grid">
+
+    <div class="report-card">
+      <div class="report-header">
+        <div class="report-title">
+          <span class="dot"></span>
+          QoS AirCall
+        </div>
+        <a class="open-btn"
+           href="https://app.powerbi.com/reportEmbed?reportId=ab4f6de9-08ea-4e1d-930f-6211735b28a8&appId=cc2fbf23-0e88-420e-bb4b-a27a97f1a084&autoAuth=true&ctid=178c73d7-24e9-4cc4-88c4-323833b54b18"
+           target="_blank">
+          Ouvrir ↗
+        </a>
+      </div>
+      <iframe
+        src="https://app.powerbi.com/reportEmbed?reportId=ab4f6de9-08ea-4e1d-930f-6211735b28a8&appId=cc2fbf23-0e88-420e-bb4b-a27a97f1a084&autoAuth=true&ctid=178c73d7-24e9-4cc4-88c4-323833b54b18"
+        allowFullScreen
+        title="QoS AirCall">
+      </iframe>
+    </div>
+
+    <div class="report-card">
+      <div class="report-header">
+        <div class="report-title">
+          <span class="dot"></span>
+          Tickets CRM Actifs / personnes
+        </div>
+        <a class="open-btn"
+           href="https://app.powerbi.com/reportEmbed?reportId=362e403e-495b-448d-abba-2cd557de5bf9&appId=cc2fbf23-0e88-420e-bb4b-a27a97f1a084&autoAuth=true&ctid=178c73d7-24e9-4cc4-88c4-323833b54b18"
+           target="_blank">
+          Ouvrir ↗
+        </a>
+      </div>
+      <iframe
+        src="https://app.powerbi.com/reportEmbed?reportId=362e403e-495b-448d-abba-2cd557de5bf9&appId=cc2fbf23-0e88-420e-bb4b-a27a97f1a084&autoAuth=true&ctid=178c73d7-24e9-4cc4-88c4-323833b54b18"
+        allowFullScreen
+        title="Tickets CRM Actifs / personnes">
+      </iframe>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  const d = new Date();
+  document.getElementById('ts').textContent =
+    'Mis à jour le ' + d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })
+    + ' à ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+</script>
+
+</body>
+</html>
